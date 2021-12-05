@@ -2,6 +2,6 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=portfolio;port=3306'
+	dsn: 'mysql:host=127.0.0.1;dbname=projects;port=3306'
 	user: root
 	password:

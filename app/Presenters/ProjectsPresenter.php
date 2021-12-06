@@ -18,7 +18,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function renderDefault() {
-		$this->template->projects = $this->database->table("projects-table")->fetchAll();
+		$this->template->projects = $this->database->table("projects")->fetchAll();
 	}
 
 	public function createComponentNewProject() {
@@ -32,14 +32,14 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function newProjectDbWrite(array $formData) : void {
-		$this->database->table("projects-table")->insert([
+		$this->database->table("projects")->insert([
 			"name" => $formData["name"],
-			"link" => $formData["link"],
-			"path" => $formData["path"]
+			"path" => $formData["path"],
+			"link" => $formData["link"]
 		]);
 	}
 
 	public function renderSingle($id) {
-		$this->template->project = $this->database->table("projects-table")->get($id);
+		$this->template->project = $this->database->table("projects")->get($id);
 	}
 }

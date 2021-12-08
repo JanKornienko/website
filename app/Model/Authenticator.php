@@ -24,8 +24,7 @@ final class Authenticator implements Nette\Security\Authenticator {
 		if(!$user) {
 			$this->database->table('users')->insert([
 				'username' => $username,
-				'password' => $password
-				//'password' => $this-passwords->hash($password)
+				'password' => $this->passwords->hash($password)
 			]);
 		} else {
 			throw new \Exception('Username is already taken');
@@ -39,8 +38,7 @@ final class Authenticator implements Nette\Security\Authenticator {
 			throw new Nette\Security\AuthenticationException('User not found.');
 		}
 
-		//if(!$this->passwords->verify($password, $user->password)) {
-		if($user->password != $password) {
+		if(!$this->passwords->verify($password, $user->password)) {
 			throw new Nette\Security\AuthenticationException('Invalid password.');
 		}
 

@@ -9,9 +9,7 @@ use Nette\Database\Explorer;
 use Nette\Application\UI\Form;
 use Nette\Utils\FileSystem;
 
-
-final class ProjectsPresenter extends Nette\Application\UI\Presenter
-{
+final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 	private Explorer $database;
 
 	public function __construct(Explorer $database) {
@@ -27,18 +25,19 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter
 		$form->addText('name', 'Name')->setRequired('Add name');
 		$form->addText('link', 'Link')->setRequired('Add link');
 		$form->addMultiUpload('images', 'Images')->addRule($form::IMAGE, 'Select images');
-		$form->addUpload('readme', 'Readme')->addRule($form::IMAGE, 'Select markdown');
+		$form->addUpload('readme', 'Readme')->addRule($form::MIME_TYPE, 'Select markdown', ['text/markdown']);
 		$form->addSubmit('submit', 'Add Project');
-		$form->onSuccess[] = [$this, 'formDbWrite'];
+
+		$form->onSuccess[] = [$this, 'projectFormSuccess'];
+
 		return $form;
 	}
 
-	public function formDbWrite(array $formData) : void {
-		$path = './projects/' . $formData['name'];
-		FileSystem::createDir($path);
+	public function projectFormSuccess(array $projectFormData) : void {
+		$path = './projects/' . $projectFormData['name'];
 		$this->database->table('projects')->insert([
-			'name' => $formData['name'],
-			'link' => $formData['link'],
+			'name' => $projectFormData['name'],
+			'link' => $projectFormData['link'],
 			'path' => $path
 		]);
 		$this->redirect('Projects:');

@@ -4,6 +4,9 @@
 			<h2>{$project->name}</h2>
 			<a href="{$project->link}">GitHub</a>
 			<a n:href="Projects:single $project->id">projekt</a>
+			{if $user->isLoggedIn()}
+				<a n:href="Projects:projectDelete $project->id">Delete</a>
+			{/if}
 		</div>
 	{/foreach}
 {/block}

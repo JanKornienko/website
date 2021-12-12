@@ -3,4 +3,7 @@
 	{control signupForm}
 	<h1>Prihlaseni</h1>
 	{control signinForm}
+	{if $user->isLoggedIn()}
+		<a n:href="Sign:out">Sign Out</a>
+	{/if}
 {/block}

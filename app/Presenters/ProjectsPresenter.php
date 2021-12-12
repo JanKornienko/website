@@ -43,6 +43,11 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$this->redirect('Projects:');
 	}
 
+	public function actionProjectDelete($id) {
+		$this->database->table('projects')->where('id', $id)->delete();
+		$this->redirect('Projects:');
+	}
+
 	public function renderSingle($id) {
 		$this->template->project = $this->database->table('projects')->get($id);
 	}

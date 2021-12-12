@@ -25,7 +25,6 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$form->addText('name', 'Name')->setRequired('Add name');
 		$form->addText('link', 'Link')->setRequired('Add link');
 		$form->addMultiUpload('images', 'Images')->addRule($form::IMAGE, 'Select images');
-		$form->addUpload('readme', 'Readme')->addRule($form::MIME_TYPE, 'Select markdown', ['text/markdown']);
 		$form->addSubmit('submit', 'Add Project');
 
 		$form->onSuccess[] = [$this, 'projectFormSuccess'];
@@ -34,7 +33,12 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function projectFormSuccess(array $projectFormData) : void {
-		$path = './projects/' . $projectFormData['name'];
+		$path = '/projects_upload/' . $projectFormData['name'] . '/';
+		FileSystem::createDir('.' . $path);
+		foreach ($projectFormData['images'] as $file) {
+			$name = '.' . $path . uniqid('IMG_') . '_' . $file->name;
+			$file->move($name);
+		}
 		$this->database->table('projects')->insert([
 			'name' => $projectFormData['name'],
 			'link' => $projectFormData['link'],
@@ -44,11 +48,14 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function actionProjectDelete($id) {
+		$project = $this->database->table('projects')->get($id);
+		FileSystem::delete('.' . $project->path);
 		$this->database->table('projects')->where('id', $id)->delete();
 		$this->redirect('Projects:');
 	}
 
 	public function renderSingle($id) {
 		$this->template->project = $this->database->table('projects')->get($id);
+		$this->template->images = array_diff(scandir('.' . $this->template->project->path), array('.', '..'));
 	}
 }

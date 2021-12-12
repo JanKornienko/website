@@ -1,3 +1,6 @@
 {block content}
 	<h1>{$project->name}</h1>
+	{foreach $images as $image}
+		<img src="{$basePath}{$project->path}{$image}">
+	{/foreach}
 {/block}

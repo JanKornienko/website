@@ -44,3 +44,6 @@ should be ready to go.
 
 **It is CRITICAL that whole `app/`, `config/`, `log/` and `temp/` directories are not accessible directly
 via a web browser. See [security warning](https://nette.org/security-warning).**
+
+## Tailwind CSS
+- `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch`

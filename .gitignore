@@ -1,2 +1,3 @@
-node_modules
-projects_upload
+www/node_modules
+www/projects_upload
+www/dist/output.css

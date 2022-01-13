@@ -1,5 +1,5 @@
 module.exports = {
-  content: [],
+  content: ["../app/Presenters/templates/**/*.latte"],
   theme: {
     extend: {},
   },

@@ -46,4 +46,9 @@ should be ready to go.
 via a web browser. See [security warning](https://nette.org/security-warning).**
 
 ## Tailwind CSS
-- `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch`
+```
+cd website/www
+npm install
+```
+- Development: `npm run dev`
+- Production: `npm run prod`

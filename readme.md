@@ -45,10 +45,11 @@ should be ready to go.
 **It is CRITICAL that whole `app/`, `config/`, `log/` and `temp/` directories are not accessible directly
 via a web browser. See [security warning](https://nette.org/security-warning).**
 
-## Tailwind CSS
+## Bulma CSS
 ```
 cd website/www
 npm install
 ```
-- Development: `npm run dev`
-- Production: `npm run prod`
+- `npm run css-build` takes `sass/mystyles.scss` as an input, and outputs ecss/mystyles.css`, while omitting the source map
+- `npm run css-watch` builds the CSS and watches for changes
+- `npm run start` is simply a shortcut for `css-watch`

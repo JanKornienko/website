@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Title -->
 		<title>{ifset title}{include title|stripHtml} | {/ifset}Jan Kornienko</title>
+		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="{$basePath}/favicon.ico">
+		<!-- Bulma -->
 		<link rel="stylesheet" href="{$basePath}/css/styles.css">
 	</head>
 
-	<body>
+	<body class="is-family-code">
 		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 		<!-- Header -->
-		<header>
+		<header n:if="$presenter->name != Homepage">
+			<nav class="navbar">
+				<div class="container">
+					<div class="navbar-brand">
+						<div class="navbar-item">
+							<a class="has-text-black" n:href="Homepage:">Home</a>
+						</div>
+					</div>
+				</div>
+			</nav>
 		</header>
 
-		<a class="button is-primary" href="#">Primary</a>
 		{include content}
 
 		<!-- Footer -->

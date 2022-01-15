@@ -10,7 +10,7 @@
 		</div>
 	</section>
 
-	<!-- About me Section -->
+	<!-- Who Am I Section -->
 	<section class="section is-medium">
 		<div class="container">
 			<div class="columns is-vcentered">
@@ -30,6 +30,26 @@
 	<!-- Skills Section -->
 	<section id="skills" class="section is-medium">
 		<div class="container">
+			<div class="has-text-centered mb-4">
+				<h1 class="title">Skills</h1>
+				<h2 class="subtitle">Here are my tech skills</h2>
+			</div>
+			<div class="columns is-multiline is-mobile">
+				{foreach $skills as $skill}
+					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
+						<div class="box is-flex is-flex-direction-column is-align-items-center">
+							<figure class="image is-128x128 is-flex is-align-items-center mb-4">
+								<img src="{$basePath}/ico/{$skill->name}.svg">
+							</figure>
+							<progress class="progress is-small is-dark" value="{$skill->percentage}" max="100">{$skill->percentage}%</progress>
+						</div>
+					</div>
+				{/foreach}
+			</div>
+			<div class="has-text-centered">
+				<h2 class="subtitle">Also check out my work</h2>
+				<a class="button is-dark is-outlined" n:href="Projects:">Projects</a>
+			</div>
 		</div>
 	</section>
 

@@ -11,12 +11,12 @@
 	</section>
 
 	<!-- Who Am I Section -->
-	<section id="who-am-i" class="section is-medium">
+	<section id="who-am-i" class="section">
 		<div class="container">
 			<div class="columns is-vcentered">
 				<div class="column is-three-quarters has-text-justified">
 					<h1 class="title">Who Am I</h1>
-					<p>I am a junior developer who is currently completing a high school focused on information technology and is preparing for combined university studies, also in this area. In the process, I would like to gain as much work experience as possible in programming and mostly back-end web development and databases. I don't have much work experience now, but I am working on my <a class="has-text-dark has-text-weight-bold" n:href="Projects:">projects</a> and I've learned a lot of <a class="has-text-dark has-text-weight-bold" n:href="Homepage:#skills">skills</a>.</p>
+					<p>I am a junior developer who is currently completing a high school focused on information technology and is preparing for combined university studies, also in this area. In the process, I would like to gain as much work experience as possible in programming and mostly back-end web development and databases. I don't have much work experience, but I am working on my <a class="has-text-dark has-text-weight-bold" n:href="Projects:">projects</a> and I've learned a lot of <a class="has-text-dark has-text-weight-bold" n:href="Homepage:#skills">skills</a>.</p>
 					<p class="my-4">Continue below to find out more about me.</p>
 					<a class="button is-dark is-outlined" href="{$basePath}/files/Jan_Kornienko-CV.pdf">CV</a>
 				</div>
@@ -28,7 +28,7 @@
 	</section>
 
 	<!-- Skills Section -->
-	<section id="skills" class="section is-medium">
+	<section id="skills" class="section">
 		<div class="container">
 			<div class="has-text-centered mb-4">
 				<h1 class="title">Skills</h1>
@@ -38,6 +38,9 @@
 				{foreach $skills as $skill}
 					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
 						<div class="box" title="{$skill->name}">
+							<div class="is-flex" n:if="$user->isLoggedIn()">
+								<button class="delete is-large ml-auto"></button>
+							</div>
 							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
 								<img src="{$basePath}/ico/{$skill->name}.svg">
 							</figure>
@@ -54,7 +57,7 @@
 	</section>
 
 	<!-- Contact Section -->
-	<section id="contact" class="section is-medium">
+	<section id="contact" class="section">
 		<div class="container">
 			<div class="has-text-centered">
 				<h1 class="title">Contact</h1>

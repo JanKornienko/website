@@ -37,8 +37,8 @@
 			<div class="columns is-multiline is-mobile">
 				{foreach $skills as $skill}
 					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
-						<div class="box is-flex is-flex-direction-column is-align-items-center">
-							<figure class="image is-128x128 is-flex is-align-items-center mb-4">
+						<div class="box" title="{$skill->name}">
+							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
 								<img src="{$basePath}/ico/{$skill->name}.svg">
 							</figure>
 							<progress class="progress is-small is-dark" value="{$skill->percentage}" max="100">{$skill->percentage}%</progress>
@@ -54,9 +54,46 @@
 	</section>
 
 	<!-- Contact Section -->
-	<section class="section is-medium has-text-centered">
+	<section class="section is-medium">
 		<div class="container">
-			<h1 class="title">Contact</h1>
+			<div class="has-text-centered">
+				<h1 class="title">Contact</h1>
+				<h2 class="subtitle"><a class="has-text-dark" href="mailto:kornienko.jan@gmail.com">kornienko.jan@gmail.com</a></h2>
+				<div class="columns is-centered">
+					<div class="column is-narrow">
+						<a href="https://github.com/JanKornienko" target="_blank">
+							<figure class="image is-32x32 mx-auto">
+								<img src="{$basePath}/ico/github.svg">
+							</figure>
+							<p class="has-text-dark">GitHub</p>
+						</a>
+					</div>
+					<div class="column is-narrow">
+						<a href="https://twitter.com/JanKornienko" target="_blank">
+							<figure class="image is-32x32 mx-auto">
+								<img src="{$basePath}/ico/twitter.svg">
+							</figure>
+							<p class="has-text-dark">Twitter</p>
+						</a>
+					</div>
+					<div class="column is-narrow">
+						<a href="https://www.linkedin.com/in/jan-kornienko/" target="_blank">
+							<figure class="image is-32x32 mx-auto">
+								<img src="{$basePath}/ico/linkedin.svg">
+							</figure>
+							<p class="has-text-dark">LinkedIn</p>
+						</a>
+					</div>
+					<div class="column is-narrow">
+						<a href="mailto:kornienko.jan@gmail.com">
+							<figure class="image is-32x32 mx-auto">
+								<img src="{$basePath}/ico/mail.svg">
+							</figure>
+							<p class="has-text-dark">Mail</p>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 {/block}

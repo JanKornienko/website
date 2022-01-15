@@ -1,6 +1,12 @@
 @charset "utf-8";
 @import "../node_modules/bulma/bulma.sass";
 
+// Who Am I Picture
+.profile {
+	border-radius: 0.5rem;
+}
+
+// Skill Box Hover
 .box {
 	transition: all 0.2s;
 	-webkit-transition: all 0.2s;
@@ -17,4 +23,15 @@
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
 	-moz-transform: scale(1.1);
+}
+
+// Sticky Footer
+html, body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+body > footer {
+	margin-top: auto;
 }

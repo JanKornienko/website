@@ -30,7 +30,25 @@
 		{include content}
 
 		<!-- Footer -->
-		<footer>
+		<footer class="footer py-2">
+			<div class="container">
+				<div class="columns is-centered has-text-centered my-0">
+					<a class="column is-narrow has-text-dark pb-0" n:href="Homepage:">Home</a>
+					<a class="column is-narrow has-text-dark pb-0" n:href="Projects:">Projects</a>
+					<a class="column is-narrow has-text-dark pb-0" n:href="Homepage:#who-am-i">Who Am I</a>
+					<a class="column is-narrow has-text-dark pb-0" n:href="Homepage:#skills">Skills</a>
+					<a class="column is-narrow has-text-dark pb-0" n:href="Homepage:#contact">Contact</a>
+				</div>
+				<div class="columns is-centered has-text-centered my-0">
+					{if $user->isLoggedIn()}
+						<a class="column is-narrow has-text-dark pb-0" n:href="Sign:out">Log Out</a>
+						<a class="column is-narrow has-text-dark pb-0" href="#">Change Password</a>
+					{else}
+						<a class="column is-narrow has-text-dark pb-0" n:href="Sign:">Log In</a>
+					{/if}
+				</div>
+				<p class="has-text-centered pt-3">Made by <i>Jan Kornienko</i></p>
+			</div>
 		</footer>
 
 		{block scripts}

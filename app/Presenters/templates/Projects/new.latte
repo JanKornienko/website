@@ -1,8 +1,42 @@
 {block title}New Project{/block}
 {block content}
-	{if $user->isLoggedIn()}
-		{control newProject}
-	{else}
-		<p>You can't add new projects, plese <a n:href="User:">sign in</a>.</p>
-	{/if}
+	<!-- New Project Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					{if $user->isLoggedIn()}
+						<h1 class="title">New Project</h1>
+						{form newProject}
+							<div class="field">
+								<label class="label" n:name="name">Name</label>
+								<div class="control">
+									<input class="input is-family-code" n:name="name">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label" n:name="link">Link</label>
+								<div class="control">
+									<input class="input" n:name="link">
+								</div>
+							</div>
+							<div class="field is-grouped">
+								<div class="control file">
+									<label class="file-label" n:name="images">
+										<input class="file-input" n:name="images">
+										<div class="button is-dark is-outlined file-cta">Images</div>
+									</label>
+								</div>
+								<div class="control">
+									<button class="button is-dark is-family-code is-lowercase" n:name="submit">Add Project</button>
+								</div>
+							</div>
+						{/form}
+					{else}
+						<h2 class="subtitle has-text-centered">You are not an admin, plese <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">leave</a> or <a class="has-text-dark has-text-weight-bold" n:href="User:">log in</a>.</h2>
+					{/if}
+				</div>
+			</div>
+		</div>
+	</section>
 {/block}

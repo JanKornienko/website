@@ -22,7 +22,10 @@
 						<div class="navbar-item">
 							<a class="has-text-dark" n:href="Homepage:">Home</a>
 						</div>
-						<div class="navbar-item" n:if="$tempName == 'Projects:detail' || 'Projects:new'">
+						<div class="navbar-item" n:if="$tempName == 'Projects:detail'">
+							<a class="button is-dark" n:href="Projects:">Back</a>
+						</div>
+						<div class="navbar-item" n:if="$tempName == 'Projects:new'">
 							<a class="button is-dark" n:href="Projects:">Projects</a>
 						</div>
 					</div>

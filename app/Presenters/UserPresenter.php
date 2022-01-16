@@ -22,7 +22,7 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 		$form = new Form;
 		$form->addText('username', 'Username:')->setRequired();
 		$form->addPassword('password', 'Password:')->setRequired();
-		$form->addSubmit('submit', 'Sign up');
+		$form->addSubmit('submit', 'Sign Up');
 
 		$form->onSuccess[] = [$this, 'formSignupSuccess'];
 
@@ -61,7 +61,7 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 		$this->template->tempName = 'User:';
 	}
 
-	public function renderRegister() {
+	public function renderSignup() {
 		$this->template->tempName = 'User:register';
 	}
 }

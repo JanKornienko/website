@@ -21,7 +21,7 @@
 					<a class="button is-dark is-outlined" href="{$basePath}/files/Jan_Kornienko-CV.pdf">CV</a>
 				</div>
 				<div class="column">
-					<img class="profile" src="{$basePath}/img/profile.jpg" alt="Picture of Jan Kornienko">
+					<img class="img-corner" src="{$basePath}/img/profile.jpg" alt="Picture of Jan Kornienko">
 				</div>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 			<div class="columns is-multiline is-mobile">
 				{foreach $skills as $skill}
 					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
-						<div class="box" title="{$skill->name}">
+						<div class="box box-hover" title="{$skill->name}">
 							<div class="is-flex" n:if="$user->isLoggedIn()">
 								<button class="delete is-large ml-auto"></button>
 							</div>

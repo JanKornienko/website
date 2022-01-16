@@ -1,12 +1,35 @@
 {block title}{$project->name}{/block}
 {block content}
-	<!-- Single Project Section -->
+	<!-- Project Title Section -->
 	<section class="section">
 		<div class="container">
-			<h1 class="title">{$project->name}</h1>
-			{foreach $images as $image}
-				<img src="{$basePath}{$project->path}{$image}">
-			{/foreach}
+			<h1 class="title has-text-centered">{$project->name}</h1>
+			<div class="columns is-centered">
+				<div class="column is-narrow is-flex">
+					<a class="button is-dark is-outlined mx-auto" href="{$project->link}" target="_blank">GitHub</a>
+				</div>
+				<div class="column is-narrow is-flex">
+					<a class="button is-dark is-outlined mx-auto" href="{$project->link}/archive/refs/heads/master.zip">Download</a>
+				</div>
+				<div class="column is-narrow is-flex" n:if="$user->isLoggedIn()">
+					<a class="button is-danger is-outlined mx-auto" n:href="Projects:projectDelete $project->id">Delete</a>
+				</div>
+			</div>
 		</div>
 	</section>
+	<!-- Project Pictures Section -->
+	<section class="section">
+		<div class="container">
+			<div class="columns is-multiline is-centered is-vcentered">
+				{foreach $images as $image}
+					<div class="column is-half">
+						<img class="img-corner img-border" src="{$basePath}{$project->path}{$image}">
+					</div>
+				{/foreach}
+			</div>
+		</div>
+	</section>
+{/block}
+{block scripts}
+	<script src="{$basePath}/js/modal.js"></script>
 {/block}

@@ -1,0 +1,12 @@
+{block title}{$project->name}{/block}
+{block content}
+	<!-- Single Project Section -->
+	<section class="section">
+		<div class="container">
+			<h1 class="title">{$project->name}</h1>
+			{foreach $images as $image}
+				<img src="{$basePath}{$project->path}{$image}">
+			{/foreach}
+		</div>
+	</section>
+{/block}

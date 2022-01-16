@@ -22,6 +22,9 @@
 						<div class="navbar-item">
 							<a class="has-text-dark" n:href="Homepage:">Home</a>
 						</div>
+						<div class="navbar-item" n:if="$tempName == 'Projects:detail' || 'Projects:new'">
+							<a class="button is-dark" n:href="Projects:">Projects</a>
+						</div>
 					</div>
 				</div>
 			</nav>
@@ -41,10 +44,11 @@
 				</div>
 				<div class="columns is-centered has-text-centered my-0">
 					{if $user->isLoggedIn()}
-						<a class="column is-narrow has-text-dark pb-0" n:href="Sign:out">Log Out</a>
+						<a class="column is-narrow has-text-dark pb-0" n:href="User:out">Log Out</a>
 						<a class="column is-narrow has-text-dark pb-0" href="#">Change Password</a>
+						<a class="column is-narrow has-text-dark pb-0" n:href="Projects:new">New Project</a>
 					{else}
-						<a class="column is-narrow has-text-dark pb-0" n:href="Sign:">Log In</a>
+						<a class="column is-narrow has-text-dark pb-0" n:href="User:">Log In</a>
 					{/if}
 				</div>
 				<p class="has-text-centered pt-3">Made by <i>Jan Kornienko</i></p>

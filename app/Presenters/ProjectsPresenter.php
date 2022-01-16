@@ -18,6 +18,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 
 	public function renderDefault() {
 		$this->template->projects = $this->database->table('projects')->fetchAll();
+		$this->template->tempName = 'Projects:';
 	}
 
 	public function createComponentNewProject() {
@@ -54,8 +55,13 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$this->redirect('Projects:');
 	}
 
-	public function renderSingle($id) {
+	public function renderDetail($id) {
 		$this->template->project = $this->database->table('projects')->get($id);
 		$this->template->images = array_diff(scandir('.' . $this->template->project->path), array('.', '..'));
+		$this->template->tempName = 'Projects:detail';
+	}
+
+	public function renderNew() {
+		$this->template->tempName = 'Projects:new';
 	}
 }

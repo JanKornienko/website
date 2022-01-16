@@ -9,7 +9,7 @@ use Nette\Database\Explorer;
 use App\Model\Authenticator;
 use Nette\Application\UI\Form;
 
-final class SignPresenter extends Nette\Application\UI\Presenter {
+final class UserPresenter extends Nette\Application\UI\Presenter {
 	private Explorer $database;
 	private Authenticator $auth;
 
@@ -33,18 +33,18 @@ final class SignPresenter extends Nette\Application\UI\Presenter {
 		$this->auth->register(strtolower($values['username']), $values['password']);
 	}
 
-	public function createComponentSigninForm() {
+	public function createComponentLoginForm() {
 		$form = new Form;
 		$form->addText('username', 'Username:')->setRequired();
 		$form->addPassword('password', 'Password:')->setRequired();
-		$form->addSubmit('submit', 'Sign in');
+		$form->addSubmit('submit', 'Log In');
 
-		$form->onSuccess[] = [$this, 'formSigninSuccess'];
+		$form->onSuccess[] = [$this, 'formLoginSuccess'];
 
 		return $form;
 	}
 
-	public function formSigninSuccess(array $values) : void {
+	public function formLoginSuccess(array $values) : void {
 		try {
 			$this->getUser()->login($values["username"], $values["password"]);
 		} catch(\Exception $e) {
@@ -55,5 +55,13 @@ final class SignPresenter extends Nette\Application\UI\Presenter {
 	public function actionOut() {
 		$this->getUser()->logout(true);
 		$this->redirect('Homepage:');
+	}
+
+	public function renderDefault() {
+		$this->template->tempName = 'User:';
+	}
+
+	public function renderRegister() {
+		$this->template->tempName = 'User:register';
 	}
 }

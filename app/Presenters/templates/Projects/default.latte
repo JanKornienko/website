@@ -3,14 +3,13 @@
 	<!-- Projects Section -->
 	<section class="section">
 		<div class="container">
+			<h1 class="title has-text-centered">Projects</h1>
 			{foreach $projects as $project}
 				<div class="project" data-id="{$project->id}">
 					<h1 class="title">{$project->name}</h1>
-					<a href="{$project->link}">GitHub</a>
-					<a n:href="Projects:single $project->id">projekt</a>
-					{if $user->isLoggedIn()}
-						<a n:href="Projects:projectDelete $project->id">Delete</a>
-					{/if}
+					<a class="button is-dark is-outlined" href="{$project->link}" target="_blank">GitHub</a>
+					<a class="button is-dark is-outlined" n:href="Projects:detail $project->id">Detail</a>
+					<a class="button is-danger is-outlined" n:href="Projects:projectDelete $project->id" n:if="$user->isLoggedIn()">Delete</a>
 				</div>
 			{/foreach}
 		</div>

@@ -1,23 +1,13 @@
-{block title}User{/block}
+{block title}New User{/block}
 {block content}
-	<!-- Log In Section -->
+	<!-- New User Section -->
 	<section class="section is-medium">
 		<div class="container is-flex is-flex-direction-column is-justify-content-center">
 			<div class="columns is-centered">
 				<div class="column is-half">
 					{if $user->isLoggedIn()}
-						<h1 class="title has-text-centered">User</h1>
-						<div class="columns is-centered">
-							<div class="column is-narrow is-flex">
-								<a class="button is-dark is-outlined mx-auto" n:href="User:new">New User</a>
-							</div>
-							<div class="column is-narrow is-flex">
-								<a class="button is-dark is-outlined mx-auto" n:href="User:changePassword">Change Password</a>
-							</div>
-						</div>
-					{else}
-						<h1 class="title">Log In</h1>
-						{form login}
+						<h1 class="title">New User</h1>
+						{form newUser}
 							<div class="field">
 								<label class="label" n:name="username">Username</label>
 								<div class="control">
@@ -32,10 +22,12 @@
 							</div>
 							<div class="field">
 								<div class="control">
-									<button class="button is-dark is-family-code is-lowercase" n:name="submit">Log In</button>
+									<button class="button is-dark is-family-code is-lowercase" n:name="submit">Sign Up</button>
 								</div>
 							</div>
 						{/form}
+					{else}
+						<h2 class="subtitle has-text-centered">You are not an admin, plese <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">leave</a> or <a class="has-text-dark has-text-weight-bold" n:href="User:">log in</a>.</h2>
 					{/if}
 				</div>
 			</div>

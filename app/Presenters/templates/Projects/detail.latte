@@ -12,7 +12,7 @@
 					<a class="button is-dark is-outlined mx-auto" href="{$project->link}/archive/refs/heads/master.zip">Download</a>
 				</div>
 				<div class="column is-narrow is-flex" n:if="$user->isLoggedIn()">
-					<a class="button is-danger is-outlined mx-auto" n:href="Projects:projectDelete $project->id">Delete</a>
+					<a class="button is-danger is-outlined mx-auto" n:href="Projects:deleteProject $project->id">Delete</a>
 				</div>
 			</div>
 		</div>

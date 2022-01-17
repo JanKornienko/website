@@ -11,7 +11,7 @@
 							<h2 class="subtitle">{$project->name}</h2>
 							<a class="button is-dark is-outlined" href="{$project->link}" target="_blank">GitHub</a>
 							<a class="button is-dark is-outlined" n:href="Projects:detail $project->id">Detail</a>
-							<a class="button is-danger is-outlined" n:href="Projects:projectDelete $project->id" n:if="$user->isLoggedIn()">Delete</a>
+							<a class="button is-danger is-outlined" n:href="Projects:deleteProject $project->id" n:if="$user->isLoggedIn()">Delete</a>
 						</div>
 					</div>
 				{/foreach}

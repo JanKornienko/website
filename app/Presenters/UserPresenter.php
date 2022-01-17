@@ -18,33 +18,33 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 		$this->auth = $auth;
 	}
 
-	public function createComponentSignupForm() {
+	public function createComponentNewUser() {
 		$form = new Form;
 		$form->addText('username', 'Username:')->setRequired();
 		$form->addPassword('password', 'Password:')->setRequired();
 		$form->addSubmit('submit', 'Sign Up');
 
-		$form->onSuccess[] = [$this, 'formSignupSuccess'];
+		$form->onSuccess[] = [$this, 'newUserSuccess'];
 
 		return $form;
 	}
 
-	public function formSignupSuccess(array $values) : void {
+	public function newUserSuccess(array $values) : void {
 		$this->auth->register(strtolower($values['username']), $values['password']);
 	}
 
-	public function createComponentLoginForm() {
+	public function createComponentLogin() {
 		$form = new Form;
 		$form->addText('username', 'Username:')->setRequired();
 		$form->addPassword('password', 'Password:')->setRequired();
 		$form->addSubmit('submit', 'Log In');
 
-		$form->onSuccess[] = [$this, 'formLoginSuccess'];
+		$form->onSuccess[] = [$this, 'loginSuccess'];
 
 		return $form;
 	}
 
-	public function formLoginSuccess(array $values) : void {
+	public function loginSuccess(array $values) : void {
 		try {
 			$this->getUser()->login($values["username"], $values["password"]);
 		} catch(\Exception $e) {
@@ -61,7 +61,11 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 		$this->template->tempName = 'User:';
 	}
 
-	public function renderSignup() {
-		$this->template->tempName = 'User:register';
+	public function renderNew() {
+		$this->template->tempName = 'User:new';
+	}
+
+	public function renderChangePassword() {
+		$this->template->tempName = 'User:new';
 	}
 }

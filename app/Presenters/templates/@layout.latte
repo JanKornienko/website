@@ -31,6 +31,12 @@
 						<div class="navbar-item" n:if="($tempName == 'Projects:') && ($user->isLoggedIn())">
 							<a class="button is-dark" n:href="Projects:new">New Project</a>
 						</div>
+						<div class="navbar-item" n:if="($tempName == 'User:new') || ($tempName == 'User:changePassword') && ($user->isLoggedIn())">
+							<a class="button is-dark" n:href="User:">Back</a>
+						</div>
+						<div class="navbar-item" n:if="($presenter->name == User) && ($user->isLoggedIn())">
+							<a class="button is-danger" n:href="User:out">Log Out</a>
+						</div>
 					</div>
 				</div>
 			</nav>
@@ -50,8 +56,8 @@
 				</div>
 				<div class="columns is-centered has-text-centered my-0">
 					{if $user->isLoggedIn()}
-						<a class="column is-narrow has-text-dark pb-0" n:href="User:out">Log Out</a>
-						<a class="column is-narrow has-text-dark pb-0" href="#">Change Password</a>
+						<a class="column is-narrow has-text-danger pb-0" n:href="User:out">Log Out</a>
+						<a class="column is-narrow has-text-dark pb-0" n:href="User:">User</a>
 						<a class="column is-narrow has-text-dark pb-0" n:href="Projects:new">New Project</a>
 					{else}
 						<a class="column is-narrow has-text-dark pb-0" n:href="User:">Log In</a>

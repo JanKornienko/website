@@ -28,12 +28,12 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$form->addMultiUpload('images', 'Images')->addRule($form::IMAGE, 'Select images');
 		$form->addSubmit('submit', 'Add Project');
 
-		$form->onSuccess[] = [$this, 'projectFormSuccess'];
+		$form->onSuccess[] = [$this, 'newProjectSuccess'];
 
 		return $form;
 	}
 
-	public function projectFormSuccess(array $projectFormData) : void {
+	public function newProjectSuccess(array $projectFormData) : void {
 		$path = '/files/projects/' . $projectFormData['name'] . '/';
 		FileSystem::createDir('.' . $path);
 		foreach ($projectFormData['images'] as $file) {
@@ -48,7 +48,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$this->redirect('Projects:');
 	}
 
-	public function actionProjectDelete($id) {
+	public function actionDeleteProject($id) {
 		$project = $this->database->table('projects')->get($id);
 		FileSystem::delete('.' . $project->path);
 		$this->database->table('projects')->where('id', $id)->delete();

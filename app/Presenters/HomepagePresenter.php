@@ -23,12 +23,12 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 		$form->addUpload('image', 'Image')->addRule($form::MIME_TYPE, 'Select .svg file!', 'image/svg+xml')->setRequired('Add logo of Skill!');
 		$form->addSubmit('submit', 'Add Skill');
 
-		$form->onSuccess[] = [$this, 'skillFormSuccess'];
+		$form->onSuccess[] = [$this, 'newSkillSuccess'];
 
 		return $form;
 	}
 
-	public function skillFormSuccess(array $skillFormData) : void {
+	public function newSkillSuccess(array $skillFormData) : void {
 		$name = './files/skills/' . $skillFormData['name'] . '.svg';
 		$skillFormData['image']->move($name);
 		$this->database->table('skills')->insert([
@@ -38,7 +38,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 		$this->redirect('Homepage:#skills');
 	}
 
-	public function actionSkillDelete($id) {
+	public function actionDeleteSkill($id) {
 		$skill = $this->database->table('skills')->get($id);
 		FileSystem::delete('./files/skills/' . $skill->name . '.svg');
 		$this->database->table('skills')->where('id', $id)->delete();

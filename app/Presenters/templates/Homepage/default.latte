@@ -37,9 +37,9 @@
 			<div class="columns is-multiline is-mobile">
 				{foreach $skills as $skill}
 					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
-						<div class="box box-hover" title="{$skill->name}">
+						<div class="box box-hover" title="{$skill->name}: {$skill->percentage}%">
 							<div class="is-flex" n:if="$user->isLoggedIn()">
-								<button class="delete is-large ml-auto"></button>
+								<a class="delete is-large ml-auto" n:href="Homepage:skillDelete $skill->id"></a>
 							</div>
 							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
 								<img src="{$basePath}/ico/{$skill->name}.svg">
@@ -48,6 +48,9 @@
 						</div>
 					</div>
 				{/foreach}
+				<div class="column is-6-mobile is-2 desktop is-4-tablet is-flex is-justify-content-center is-align-items-center" n:if="$user->isLoggedIn()">
+					<a class="button is-dark is-outlined" n:href="Homepage:new">New Skill</a>
+				</div>
 			</div>
 			<div class="has-text-centered">
 				<h2 class="subtitle">Also check out my work</h2>

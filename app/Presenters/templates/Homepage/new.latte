@@ -1,0 +1,42 @@
+{block title}New Skill{/block}
+{block content}
+	<!-- New Skill Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					{if $user->isLoggedIn()}
+						<h1 class="title">New Skill</h1>
+						{form newSkill}
+							<div class="field">
+								<label class="label" n:name="name">Name</label>
+								<div class="control">
+									<input class="input is-family-code" n:name="name">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label" n:name="percentage">Percentage</label>
+								<div class="control">
+									<input class="input is-family-code" n:name="percentage">
+								</div>
+							</div>
+							<div class="field is-grouped">
+								<div class="control file">
+									<label class="file-label" n:name="image">
+										<input class="file-input" n:name="image">
+										<div class="button is-dark is-outlined file-cta">Image</div>
+									</label>
+								</div>
+								<div class="control">
+									<button class="button is-dark is-family-code is-lowercase" n:name="submit">Add Skill</button>
+								</div>
+							</div>
+						{/form}
+					{else}
+						<h2 class="subtitle has-text-centered">You are not an admin, plese <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">leave</a> or <a class="has-text-dark has-text-weight-bold" n:href="User:">log in</a>.</h2>
+					{/if}
+				</div>
+			</div>
+		</div>
+	</section>
+{/block}

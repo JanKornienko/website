@@ -29,7 +29,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function skillFormSuccess(array $skillFormData) : void {
-		$name = './ico/' . $skillFormData['name'] . '.svg';
+		$name = './files/skills/' . $skillFormData['name'] . '.svg';
 		$skillFormData['image']->move($name);
 		$this->database->table('skills')->insert([
 			'name' => $skillFormData['name'],
@@ -40,7 +40,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
 	public function actionSkillDelete($id) {
 		$skill = $this->database->table('skills')->get($id);
-		FileSystem::delete('./ico/' . $skill->name . '.svg');
+		FileSystem::delete('./files/skills/' . $skill->name . '.svg');
 		$this->database->table('skills')->where('id', $id)->delete();
 		$this->redirect('Homepage:#skills');
 	}

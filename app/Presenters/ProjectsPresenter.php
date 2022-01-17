@@ -34,7 +34,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function projectFormSuccess(array $projectFormData) : void {
-		$path = '/projects_upload/' . $projectFormData['name'] . '/';
+		$path = '/files/projects/' . $projectFormData['name'] . '/';
 		FileSystem::createDir('.' . $path);
 		foreach ($projectFormData['images'] as $file) {
 			$name = '.' . $path . uniqid('IMG_') . '_' . $file->name;

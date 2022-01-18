@@ -30,7 +30,7 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function newUserSuccess(array $values) : void {
-		$this->auth->register(strtolower($values['username']), $values['password']);
+		$this->auth->newUser(strtolower($values['username']), $values['password']);
 	}
 
 	public function createComponentLogin() {
@@ -46,7 +46,26 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 
 	public function loginSuccess(array $values) : void {
 		try {
-			$this->getUser()->login($values["username"], $values["password"]);
+			$this->getUser()->login($values['username'], $values['password']);
+		} catch(\Exception $e) {
+			$this->flashMessage($e->getMessage());
+		}
+	}
+
+	public function createComponentChangePassword() {
+		$form = new Form;
+		$form->addPassword('oldPassword', 'Old Password:')->setRequired();
+		$form->addPassword('newPassword', 'New Password:')->setRequired();
+		$form->addSubmit('submit', 'Change Password');
+
+		$form->onSuccess[] = [$this, 'changePasswordSuccess'];
+
+		return $form;
+	}
+
+	public function changePasswordSuccess(array $values) : void {
+		try {
+			$this->auth->changePassword($this->getUser()->id, $values['oldPassword'], $values['newPassword']);
 		} catch(\Exception $e) {
 			$this->flashMessage($e->getMessage());
 		}
@@ -66,6 +85,6 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function renderChangePassword() {
-		$this->template->tempName = 'User:new';
+		$this->template->tempName = 'User:newPassword';
 	}
 }

@@ -18,7 +18,7 @@ final class Authenticator implements Nette\Security\Authenticator {
 		$this->passwords = $passwords;
 	}
 
-	public function register($username, $password) {
+	public function newUser($username, $password) {
 		$user = $this->database->table('users')->where('username', $username)->fetch();
 		
 		if(!$user) {
@@ -36,16 +36,26 @@ final class Authenticator implements Nette\Security\Authenticator {
 
 		if(!$user) {
 			throw new Nette\Security\AuthenticationException('User not found.');
-		}
-
-		if(!$this->passwords->verify($password, $user->password)) {
+		} elseif(!$this->passwords->verify($password, $user->password)) {
 			throw new Nette\Security\AuthenticationException('Invalid password.');
+		} else {
+			return new SimpleIdentity(
+				$user->id,
+				null,
+				['name' => $user->username]
+			);
 		}
+	}
 
-		return new SimpleIdentity(
-			$user->id,
-			null,
-			['name' => $user->username]
-		);
+	public function changePassword($id, $oldPassword, $newPassword) {
+		$user = $this->database->table('users')->where('id', $id)->fetch();
+
+		if(!$this->passwords->verify($oldPassword, $user->password)) {
+			throw new Nette\Security\AuthenticationException('Invalid password.');
+		} else {
+			$this->database->table('users')->where('id', $id)->update([
+				'password' => $this->passwords->hash($newPassword)
+			]);
+		}
 	}
 }

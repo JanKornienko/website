@@ -85,6 +85,6 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 	}
 
 	public function renderChangePassword() {
-		$this->template->tempName = 'User:newPassword';
+		$this->template->tempName = 'User:changePassword';
 	}
 }

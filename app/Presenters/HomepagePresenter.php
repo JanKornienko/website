@@ -49,4 +49,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 		$this->template->skills = $this->database->table('skills')->fetchAll();
 		$this->template->tempName = 'Homepage:';
 	}
+
+	public function renderNew() {
+		$this->template->tempName = 'Homepage:new';
+	}
 }

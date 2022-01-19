@@ -15,7 +15,7 @@
 		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 		<!-- Header -->
-		<header n:if="$presenter->name != Homepage">
+		<header n:if="$tempName != 'Homepage:'">
 			<nav class="navbar">
 				<div class="container">
 					<div class="navbar-brand">

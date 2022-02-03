@@ -11,7 +11,7 @@
 							<tbody>
 								{foreach $users as $test}
 								<tr> 
-									<th>{$test->username}</th>
+									<td>{$test->username}</td>
 									<td class="has-text-right">
 										<a class="button is-danger is-outlined mx-auto" n:href="User:deleteUser $test->id">Delete</a>
 									</td>

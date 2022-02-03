@@ -36,7 +36,7 @@
 			</div>
 			<div class="columns is-multiline is-mobile">
 				{foreach $skills as $skill}
-					<div class="column is-6-mobile is-2-desktop is-4-tablet" data-id="{$skill->id}">
+					<div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop" data-id="{$skill->id}">
 						<div class="box box-hover" title="{$skill->name}: {$skill->percentage}%">
 							<div class="is-flex" n:if="$user->isLoggedIn()">
 								<a class="delete is-large ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 				{/foreach}
-				<div class="column is-6-mobile is-2 desktop is-4-tablet is-flex is-justify-content-center is-align-items-center" n:if="$user->isLoggedIn()">
+				<div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop is-flex is-justify-content-center is-align-items-center" n:if="$user->isLoggedIn()">
 					<a class="button is-dark is-outlined" n:href="Homepage:new">New Skill</a>
 				</div>
 			</div>

@@ -76,6 +76,11 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 		$this->redirect('Homepage:');
 	}
 
+	public function actionDeleteUser($id) {
+		$this->database->table('users')->where('id', $id)->delete();
+		$this->redirect('User:delete');
+	}
+
 	public function renderDefault() {
 		$this->template->tempName = 'User:';
 	}
@@ -86,5 +91,10 @@ final class UserPresenter extends Nette\Application\UI\Presenter {
 
 	public function renderChangePassword() {
 		$this->template->tempName = 'User:changePassword';
+	}
+
+	public function renderDelete() {
+		$this->template->users = $this->database->table('users')->where('NOT id', $this->getUser()->getId())->fetchAll();
+		$this->template->tempName = 'User:delete';
 	}
 }

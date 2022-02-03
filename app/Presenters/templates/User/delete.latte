@@ -1,0 +1,29 @@
+{block title}Delete User{/block}
+{block content}
+	<!-- Delete User Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					{if $user->isLoggedIn()}
+						<h1 class="title has-text-centered">Delete User</h1>
+						<table class="table is-fullwidth">
+							<tbody>
+								{foreach $users as $test}
+								<tr> 
+									<th>{$test->username}</th>
+									<td class="has-text-right">
+										<a class="button is-danger is-outlined mx-auto" n:href="User:deleteUser $test->id">Delete</a>
+									</td>
+								</tr>
+								{/foreach}
+							</tbody>
+						</table>
+					{else}
+						<h2 class="subtitle has-text-centered">You are not an admin, plese <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">leave</a> or <a class="has-text-dark has-text-weight-bold" n:href="User:">log in</a>.</h2>
+					{/if}
+				</div>
+			</div>
+		</div>
+	</section>
+{/block}

@@ -25,6 +25,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$form = new Form;
 		$form->addText('name', 'Name')->setRequired('Name is required');
 		$form->addText('link', 'Link')->setRequired('Link is required');
+		$form->addTextArea('description', 'Description');
 		$form->addMultiUpload('images', 'Images')->addRule($form::IMAGE, 'Select images');
 		$form->addSubmit('submit', 'Add Project');
 
@@ -43,6 +44,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$this->database->table('projects')->insert([
 			'name' => $projectFormData['name'],
 			'link' => $projectFormData['link'],
+			'description' => $projectFormData['description'],
 			'path' => $path
 		]);
 		$this->redirect('Projects:');

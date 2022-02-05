@@ -39,7 +39,7 @@
 					<div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop" data-id="{$skill->id}">
 						<div class="box box-hover" title="{$skill->name}: {$skill->percentage}%">
 							<div class="is-flex" n:if="$user->isLoggedIn()">
-								<a class="delete is-medium ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
+								<a class="delete is-large ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
 							</div>
 							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
 								<img src="{$basePath}/files/skills/{$skill->name}.svg">

@@ -18,9 +18,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
 	public function createComponentNewSkill() {
 		$form = new Form;
-		$form->addText('name', 'Name')->setRequired('Add name');
-		$form->addInteger('percentage', 'Percentage')->addRule($form::RANGE, 'Number of % must be in range %d-%d', [0, 100])->setRequired('Add % of skill!');
-		$form->addUpload('image', 'Image')->addRule($form::MIME_TYPE, 'Select .svg file!', 'image/svg+xml')->setRequired('Add logo of Skill!');
+		$form->addText('name', 'Name')->setRequired('Name is required');
+		$form->addInteger('percentage', 'Percentage')->addRule($form::RANGE, 'Number of % must be in range %d-%d', [0, 100])->setRequired('Add % of skill');
+		$form->addUpload('image', 'Image')->addRule($form::MIME_TYPE, 'Select .svg file!', 'image/svg+xml')->setRequired('Add logo of skill');
 		$form->addSubmit('submit', 'Add Skill');
 
 		$form->onSuccess[] = [$this, 'newSkillSuccess'];

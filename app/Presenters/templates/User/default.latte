@@ -39,6 +39,12 @@
 								</div>
 							</div>
 						{/form}
+						{if $alert != ""}
+							<div class="notification is-danger has-text-centered">
+								<button class="delete is-medium"></button>
+								<p>{$alert}</p>
+							</div>
+						{/if}
 					{/if}
 				</div>
 			</div>

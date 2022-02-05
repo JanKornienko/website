@@ -18,7 +18,7 @@
 					<h1 class="title">Who Am I</h1>
 					<p>I am a junior developer who is currently completing a high school focused on information technology and is preparing for combined university studies, also in this area. In the process, I would like to gain as much work experience as possible in programming and mostly back-end web development and databases. I don't have much work experience, but I am working on my <a class="has-text-dark has-text-weight-bold" n:href="Projects:">projects</a> and I've learned a lot of <a class="has-text-dark has-text-weight-bold" n:href="Homepage:#skills">skills</a>.</p>
 					<p class="my-4">Continue below to find out more about me.</p>
-					<a class="button is-dark is-outlined" href="{$basePath}/files/Jan_Kornienko-CV.pdf">CV</a>
+					<a class="button is-dark is-outlined" href="{$basePath}/files/Jan_Kornienko-CV.pdf">Resume</a>
 				</div>
 				<div class="column">
 					<img class="img-corner" src="{$basePath}/files/img/profile.jpg" alt="Picture of Jan Kornienko">
@@ -39,7 +39,7 @@
 					<div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop" data-id="{$skill->id}">
 						<div class="box box-hover" title="{$skill->name}: {$skill->percentage}%">
 							<div class="is-flex" n:if="$user->isLoggedIn()">
-								<a class="delete is-large ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
+								<a class="delete is-medium ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
 							</div>
 							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
 								<img src="{$basePath}/files/skills/{$skill->name}.svg">

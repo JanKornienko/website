@@ -27,7 +27,7 @@ final class Authenticator implements Nette\Security\Authenticator {
 				'password' => $this->passwords->hash($password)
 			]);
 		} else {
-			throw new \Exception('Username is already taken');
+			throw new \Exception('Username already exists');
 		}
 	}
 
@@ -35,9 +35,9 @@ final class Authenticator implements Nette\Security\Authenticator {
 		$user = $this->database->table('users')->where('username', $username)->fetch();
 
 		if(!$user) {
-			throw new Nette\Security\AuthenticationException('User not found.');
+			throw new Nette\Security\AuthenticationException('Username or Password is incorrect');
 		} elseif(!$this->passwords->verify($password, $user->password)) {
-			throw new Nette\Security\AuthenticationException('Invalid password.');
+			throw new Nette\Security\AuthenticationException('Username or Password is incorrect');
 		} else {
 			return new SimpleIdentity(
 				$user->id,
@@ -51,7 +51,7 @@ final class Authenticator implements Nette\Security\Authenticator {
 		$user = $this->database->table('users')->where('id', $id)->fetch();
 
 		if(!$this->passwords->verify($oldPassword, $user->password)) {
-			throw new Nette\Security\AuthenticationException('Invalid password.');
+			throw new Nette\Security\AuthenticationException('Old Password is incorrect');
 		} else {
 			$this->database->table('users')->where('id', $id)->update([
 				'password' => $this->passwords->hash($newPassword)

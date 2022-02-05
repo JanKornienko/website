@@ -23,8 +23,8 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 
 	public function createComponentNewProject() {
 		$form = new Form;
-		$form->addText('name', 'Name')->setRequired('Add name');
-		$form->addText('link', 'Link')->setRequired('Add link');
+		$form->addText('name', 'Name')->setRequired('Name is required');
+		$form->addText('link', 'Link')->setRequired('Link is required');
 		$form->addMultiUpload('images', 'Images')->addRule($form::IMAGE, 'Select images');
 		$form->addSubmit('submit', 'Add Project');
 

@@ -38,7 +38,7 @@ final class ProjectsPresenter extends Nette\Application\UI\Presenter {
 		$path = '/files/projects/' . $projectFormData['name'] . '/';
 		FileSystem::createDir('.' . $path);
 		foreach ($projectFormData['images'] as $file) {
-			$name = '.' . $path . 'IMG_' . $file->name . '_' . uniqid();
+			$name = '.' . $path . 'IMG_' . $file->name;
 			$file->move($name);
 		}
 		$this->database->table('projects')->insert([

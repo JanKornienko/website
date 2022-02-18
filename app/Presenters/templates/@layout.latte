@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Meta Tags -->
 		<meta charset="utf-8">
+		<meta name="author" content="Jan Kornienko">
+		<meta name="robots" content="{ifset robots}{include robots|stripHTML}{else}index{/ifset}, follow">
+		<meta name="description" content="{ifset description}{include description|stripHTML}{else}Personal website of Jan Kornienko.{/ifset}">
+		<meta name="keywords" content="Jan, Kornienko, Website{ifset keywords}, {include keywords|stripHTML}{/ifset}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Open Graph Tags -->
+		<meta name="og:title" property="og:title" content="{ifset og-title}{include og-title|stripHTML}{else}Jan Kornienko{/ifset}">
+		<meta name="og:description" property="og:description" content="{ifset description}{include description|stripHTML}{else}Personal website of Jan Kornienko.{/ifset}">
+		<meta name="og:url" property="og:url" content="{ifset og-url}{include og-url|stripHTML}{else}https://jankornienko.com/{/ifset}">
 		<!-- Title -->
 		<title>{ifset title}{include title|stripHtml} | {/ifset}Jan Kornienko</title>
 		<!-- Favicon -->

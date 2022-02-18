@@ -1,4 +1,4 @@
-{block title}User{/block}
+{block robots}noindex{/block}
 {block content}
 	<!-- Log In Section -->
 	<section class="section is-medium">
@@ -6,7 +6,7 @@
 			<div class="columns is-centered">
 				<div class="column is-half">
 					{if $user->isLoggedIn()}
-						<h1 class="title has-text-centered">User</h1>
+						<h1 n:block=title class="title has-text-centered">User</h1>
 						<div class="columns is-centered">
 							<div class="column is-narrow is-flex">
 								<a class="button is-dark is-outlined mx-auto" n:href="User:new">New User</a>

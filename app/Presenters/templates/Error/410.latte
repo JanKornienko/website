@@ -1,6 +1,14 @@
 {block content}
-<h1 n:block=title>Page Not Found</h1>
-
-<p>The page you requested has been taken off the site. We apologize for the inconvenience.</p>
-
-<p><small>error 410</small></p>
+	<!-- Error 410 Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					<h1 n:block=title class="title has-text-centered">Gone</h1>
+                    <h2 class="subtitle has-text-centered">Error 410</h2>
+					<p class="has-text-centered">The page you requested has been taken off the site. We apologize for the inconvenience. Please return to the <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">Homepage</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{/block}

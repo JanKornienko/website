@@ -1,3 +1,4 @@
+{block keywords}Developer, Student, Contact, GitHub, Twitter, LinkedIn, Mail, Who Am I, Resume, CV, Skills{foreach $skills as $skill}, {$skill->name}{/foreach}{/block}
 {block content}
 	<!-- Hero Section -->
 	<section class="hero is-medium is-dark is-bold">
@@ -21,7 +22,7 @@
 					<a class="button is-dark is-outlined" href="{$basePath}/files/Jan_Kornienko-CV.pdf">Resume</a>
 				</div>
 				<div class="column">
-					<img class="img-corner" src="{$basePath}/files/img/profile.jpg" alt="Picture of Jan Kornienko">
+					<img class="img-corner" src="{$basePath}/files/img/jan_kornienko.jpg" alt="Picture of Jan Kornienko">
 				</div>
 			</div>
 		</div>
@@ -42,7 +43,7 @@
 								<a class="delete is-large ml-auto" n:href="Homepage:deleteSkill $skill->id"></a>
 							</div>
 							<figure class="image is-128x128 mx-auto mb-4 is-flex is-align-items-center">
-								<img src="{$basePath}/files/skills/{$skill->name}.svg">
+								<img src="{$basePath}/files/skills/{$skill->name}.svg" alt="{$skill->name}" loading="lazy">
 							</figure>
 							<progress class="progress is-small is-dark" value="{$skill->percentage}" max="100">{$skill->percentage}%</progress>
 						</div>
@@ -67,25 +68,25 @@
 				<h2 class="subtitle"><a class="has-text-grey-dark" href="mailto:kornienko.jan@gmail.com">kornienko.jan@gmail.com</a></h2>
 				<div class="columns is-centered">
 					<div class="column is-narrow">
-						<a href="https://github.com/JanKornienko" target="_blank">
+						<a href="https://github.com/JanKornienko" target="_blank" rel="noopener noreferrer">
 							<figure class="image is-32x32 mx-auto">
-								<img src="{$basePath}/files/ico/github.svg">
+								<img src="{$basePath}/files/ico/github.svg" alt="GitHub Account of Jan Kornienko" loading="lazy">
 							</figure>
 							<p class="has-text-dark">GitHub</p>
 						</a>
 					</div>
 					<div class="column is-narrow">
-						<a href="https://twitter.com/JanKornienko" target="_blank">
+						<a href="https://twitter.com/JanKornienko" target="_blank" rel="noopener noreferrer">
 							<figure class="image is-32x32 mx-auto">
-								<img src="{$basePath}/files/ico/twitter.svg">
+								<img src="{$basePath}/files/ico/twitter.svg" alt="Twitter Account of Jan Kornienko" loading="lazy">
 							</figure>
 							<p class="has-text-dark">Twitter</p>
 						</a>
 					</div>
 					<div class="column is-narrow">
-						<a href="https://www.linkedin.com/in/jan-kornienko/" target="_blank">
+						<a href="https://www.linkedin.com/in/jan-kornienko/" target="_blank" rel="noopener noreferrer">
 							<figure class="image is-32x32 mx-auto">
-								<img src="{$basePath}/files/ico/linkedin.svg">
+								<img src="{$basePath}/files/ico/linkedin.svg" alt="LinkedIn Account of Jan Kornienko" loading="lazy">
 							</figure>
 							<p class="has-text-dark">LinkedIn</p>
 						</a>
@@ -93,7 +94,7 @@
 					<div class="column is-narrow">
 						<a href="mailto:kornienko.jan@gmail.com">
 							<figure class="image is-32x32 mx-auto">
-								<img src="{$basePath}/files/ico/mail.svg">
+								<img src="{$basePath}/files/ico/mail.svg" alt="Mail of Jan Kornienko" loading="lazy">
 							</figure>
 							<p class="has-text-dark">Mail</p>
 						</a>

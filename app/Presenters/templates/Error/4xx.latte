@@ -1,4 +1,13 @@
 {block content}
-<h1 n:block=title>Oops...</h1>
-
-<p>Your browser sent a request that this server could not understand or process.</p>
+	<!-- Error 4xx Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					<h1 n:block=title class="title has-text-centered">Oops...</h1>
+					<p class="has-text-centered">Your browser sent a request that this server could not understand or process. Plaese return to the <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">Homepage</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{/block}

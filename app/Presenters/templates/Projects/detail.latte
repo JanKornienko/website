@@ -1,15 +1,18 @@
-{block title}{$project->name}{/block}
+{block description}{$project->name} project from Jan Kornienko's portfolio. | {$project->description}{/block}
+{block keywords}Portfolio, Project, GitHub, Download, {$project->name}{/block}
+{block og-title}{$project->name} Project{/block}
+{block og-url}https://jankornienko.com/projects/detail/{$project->id}{/block}
 {block content}
 	<!-- Project Title Section -->
 	<section class="section">
 		<div class="container">
-			<h1 class="title has-text-centered">{$project->name}</h1>
+			<h1 n:block=title class="title has-text-centered">{$project->name}</h1>
 			<div class="columns is-centered">
 				<div class="column is-narrow is-flex">
-					<a class="button is-dark is-outlined mx-auto" href="{$project->link}" target="_blank">GitHub</a>
+					<a class="button is-dark is-outlined mx-auto" href="{$project->link}" target="_blank" rel="noopener noreferrer">GitHub</a>
 				</div>
 				<div class="column is-narrow is-flex">
-					<a class="button is-dark is-outlined mx-auto" href="{$project->link}/archive/refs/heads/master.zip">Download</a>
+					<a class="button is-dark is-outlined mx-auto" href="{$project->link}/archive/refs/heads/master.zip" rel="noopener noreferrer">Download</a>
 				</div>
 				<div class="column is-narrow is-flex" n:if="$user->isLoggedIn()">
 					<a class="button is-danger is-outlined mx-auto" n:href="Projects:deleteProject $project->id">Delete</a>
@@ -33,13 +36,10 @@
 			<div class="columns is-multiline is-centered is-vcentered">
 				{foreach $images as $image}
 					<div class="column is-half">
-						<img class="img-corner img-border" src="{$basePath}{$project->path}{$image}">
+						<img class="img-corner img-border" src="{$basePath}{$project->path}{$image}" alt="{$project->name}-{$image}">
 					</div>
 				{/foreach}
 			</div>
 		</div>
 	</section>
-{/block}
-{block scripts}
-	<script src="{$basePath}/js/modal.js"></script>
 {/block}

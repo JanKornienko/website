@@ -5,3 +5,5 @@ database:
 	dsn: 'mysql:host=127.0.0.1;dbname=website_db;port=3306'
 	user: root
 	password:
+	options:
+		lazy: yes

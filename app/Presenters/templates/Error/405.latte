@@ -1,6 +1,14 @@
 {block content}
-<h1 n:block=title>Method Not Allowed</h1>
-
-<p>The requested method is not allowed for the URL.</p>
-
-<p><small>error 405</small></p>
+	<!-- Error 405 Section -->
+	<section class="section is-medium">
+		<div class="container is-flex is-flex-direction-column is-justify-content-center">
+			<div class="columns is-centered">
+				<div class="column is-half">
+					<h1 n:block=title class="title has-text-centered">Method Not Allowed</h1>
+                    <h2 class="subtitle has-text-centered">Error 405</h2>
+					<p class="has-text-centered">The requested method is not allowed for the URL. Please return to the <a class="has-text-dark has-text-weight-bold" n:href="Homepage:">Homepage</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{/block}
